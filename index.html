@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tesori di latte - Queijos Artesanais Premium</title>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --bg-alt: #1c1c1c;
+            --bg-card: #222;
+            --text: #f5f5f5;
+            --text-muted: #999;
+            --accent: #cda96f;
+            --accent-dark: #b78b3e;
+            --accent-light: #e2c185;
+            --btn-bg: linear-gradient(135deg, #cda96f, #b78b3e);
+            --shadow: 0 8px 32px rgba(205, 169, 111, 0.15);
+            --border: rgba(205, 169, 111, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: rgba(28, 28, 28, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(205, 169, 111, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px var(--accent)); }
+            to { filter: drop-shadow(0 0 15px var(--accent-light)); }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--btn-bg);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(205, 169, 111, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(205, 169, 111, 0.4);
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            background: var(--btn-bg);
+            color: var(--bg);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1.5s ease-out 1.5s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(205, 169, 111, 0.3);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: var(--bg-alt);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(205, 169, 111, 0.3);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(205, 169, 111, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+            animation: rotate 4s linear infinite;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .product-card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            position: relative;
+            z-index: 2;
+        }
+
+        .price span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+        }
+
+        .buy-button {
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            background: var(--btn-bg);
+            border: none;
+            color: var(--bg);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(205, 169, 111, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            text-align: center;
+            font-size: 8rem;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: #111;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        footer h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Cart */
+        .cart-icon {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            background: var(--btn-bg);
+            color: var(--bg);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(205, 169, 111, 0.4);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-content {
+            background: var(--bg-alt);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 70vh;
+            overflow-y: auto;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-header h3 {
+            color: var(--accent);
+            font-size: 1.5em;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: var(--accent-light);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--text-muted);
+            font-size: 1.1em;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .quantity-btn {
+            background: var(--btn-bg);
+            border: none;
+            color: var(--bg);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .quantity {
+            color: var(--text);
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .remove-item {
+            background: #dc2626;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #b91c1c;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .cart-total h4 {
+            color: var(--accent);
+            font-size: 1.3em;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .cart-actions button {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .clear-cart {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            color: white;
+        }
+
+        .clear-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+        }
+
+        /* Floating Elements */
+        .floating-cheese {
+            position: fixed;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+            color: var(--accent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .floating-cheese:nth-child(odd) {
+            animation-delay: -4s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .logo { font-size: 1.6em; }
+            nav { display: none; }
+            .about-content { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+            .cart-content { width: 95%; }
+            .cart-actions { flex-direction: column; }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating cheese elements -->
+    <div class="floating-cheese" style="top: 10%; left: 10%;">🧀</div>
+    <div class="floating-cheese" style="top: 20%; right: 15%;">🧀</div>
+    <div class="floating-cheese" style="top: 60%; left: 5%;">🧀</div>
+    <div class="floating-cheese" style="top: 80%; right: 10%;">🧀</div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">Tesori Di Latte</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>tesori di latte</h1>
+            <p>Os mais refinados queijos artesanais para o seu paladar</p>
+            <a href="#produtos" class="cta-button">Descobrir Nossos Tesouros</a>
+        </div>
+    </section>
+
+    <section class="products" id="produtos">
+        <h2 class="section-title fade-in">Nossos Queijos Premium</h2>
+        <div class="product-grid">
+            <div class="product-card fade-in">
+                <img src="https://i.imgur.com/uc5tjEj.png" alt="Queijo de Minas Canastra">
+                <h3>Queijo de Minas Canastra</h3>
+                <p>Queijo original de Minas Canastra, com sabor autêntico e tradição centenária.</p>
+                <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Queijo de Minas Canastra', 57.99)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=200&h=200&fit=crop&crop=center" alt="Gorgonzola">
+                <h3>Gorgonzola Cremoso</h3>
+                <p>Queijo azul italiano cremoso, perfeito para harmonizações especiais e pratos gourmet.</p>
+                <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Gorgonzola Cremoso', 65.90)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1571169231365-7b5b9d54ba90?w=200&h=200&fit=crop&crop=center" alt="Brie">
+                <h3>Brie Francês</h3>
+                <p>Queijo brie artesanal com crosta branca aveludada e interior cremoso e suave.</p>
+                 <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Brie Francês', 45.90)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1613485411155-7d00dcfcaa85?w=200&h=200&fit=crop&crop=center" alt="Camembert">
+                <h3>Camembert Premium</h3>
+                <p>Queijo camembert de origem controlada, maturado em caves especiais por 30 dias.</p>
+                <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Camembert Premium', 52.90)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1570380263859-82d0ff86d5d7?w=200&h=200&fit=crop&crop=center" alt="Pecorino">
+                <h3>Pecorino Toscano</h3>
+                <p>Queijo de ovelha toscano tradicional, com sabor marcante e textura firme.</p>
+                <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Pecorino Toscano', 72.90)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1589881133595-0cd5d5c4773e?w=200&h=200&fit=crop&crop=center" alt="Roquefort">
+                <h3>Roquefort AOC</h3>
+                <p>Queijo azul francês feito exclusivamente com leite de ovelha, de denominação protegida.</p>
+                <div class="price">
+                    <span>R$ 65,90</span>
+                    R$ 57,99
+                </div>
+                <button class="buy-button" onclick="addToCart('Roquefort AOC', 95.90)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="sobre">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h2 class="section-title">Nossa História</h2>
+                <p>
+                    A Tesori di Latte nasceu da paixão pela arte queijeira e pela busca incansável pelos melhores sabores do mundo. 
+                    Selecionamos cuidadosamente cada queijo, trabalhando diretamente com produtores artesanais que preservam 
+                    técnicas centenárias de fabricação.
+                </p>
+                <p>
+                    Nossos queijos são verdadeiros tesouros gastronômicos, maturados em condições ideais para desenvolver 
+                    aromas e sabores únicos. Cada peça conta uma história de tradição, qualidade e amor pela gastronomia.
+                </p>
+                <p>
+                    Venha descobrir conosco o prazer de degustar queijos autênticos, que transformam qualquer momento 
+                    em uma experiência gastronômica memorável.
+                </p>
+            </div>
+            <div class="about-image fade-in">
+                🧀
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div>
+                <h3>Contato</h3>
+                <p>📱 (11) 94723-2463</p>
+            </div>
+            <div>
+                <h3>Horário</h3>
+                <p>Segunda à Sexta: 9h às 18h</p>
+                <p>Sábados: 9h às 14h</p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem;">
+            <p>&copy; 2024 Tesori di Latte. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Icon -->
+    <button class="cart-icon" onclick="toggleCart()">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Seu Carrinho</h3>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <h4>Total: R$ <span id="cartTotal">0,00</span></h4>
+            </div>
+            <div class="cart-actions">
+                <button class="whatsapp-btn" onclick="sendWhatsApp()">Finalizar Pedido</button>
+                <button class="clear-cart" onclick="clearCart()">Limpar Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            showCartNotification(name);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                updateCartDisplay();
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = totalPrice.toFixed(2).replace('.', ',');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Seu carrinho está vazio</div>';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            <button class="remove-item" onclick="removeFromCart(${index})">Remover</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cartModal');
+            cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartDisplay();
+        }
+
+        function sendWhatsApp() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let message = '*Pedido - Tesori di Latte*\n\n';
+            
+            cart.forEach(item => {
+                message += `• ${item.name}\n`;
+                message += `  Quantidade: ${item.quantity}x\n`;
+                message += `  Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+                message += `  Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n\n`;
+            });
+            
+            message += `*Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
+            message += 'Gostaria de finalizar este pedido!';
+            
+            const whatsappUrl = `https://wa.me/5511947232463?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--btn-bg);
+                color: var(--bg);
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease-out;
+                font-weight: bold;
+                border: 1px solid var(--border);
+            `;
+            notification.textContent = `${productName} adicionado ao carrinho!`;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-in forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Adicionar animações CSS para notificações
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Fechar modal ao clicar fora
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCart();
+            }
+        });
+
+        // Smooth scroll para links do menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação ao fazer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animação
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Inicializar carrinho
+        updateCartDisplay();
+
+        // Efeito parallax suave no hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+                    
