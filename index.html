@@ -7,7 +7,73 @@
 <link rel="icon" type="image/png" href="https://i.imgur.com/odfvDQH.png" />
 
     <style>
-     .header-with-icon { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; } .app-icon { width: 60px; height: 60px; border-radius: 50%; overflow: hidden; border: 3px solid #d4af37; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4); } .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+/* Header mais compacto - reduzindo tamanhos */
+.header-with-icon { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px;           /* Reduzido de 15px para 10px */
+    padding: 8px 20px;   /* Reduzido de 15px para 8px */
+}
+
+/* Ícone menor */
+.app-icon { 
+    width: 45px;         /* Reduzido de 60px para 45px */
+    height: 45px;        /* Reduzido de 60px para 45px */
+    border-radius: 50%; 
+    overflow: hidden; 
+    border: 2px solid #d4af37;  /* Reduzido de 3px para 2px */
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);  /* Sombra menor */
+}
+
+.app-icon img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* Título menor (se você tiver) */
+.header-with-icon h1 {
+    font-size: 1.5rem;   /* Tamanho reduzido do título */
+    margin: 0;
+    color: #d4af37;
+}
+
+/* Versão ainda mais compacta (opcional) */
+.header-with-icon.extra-compact { 
+    gap: 8px;
+    padding: 5px 20px;
+}
+
+.header-with-icon.extra-compact .app-icon { 
+    width: 35px;
+    height: 35px;
+    border: 1px solid #d4af37;
+    box-shadow: 0 1px 8px rgba(212, 175, 55, 0.3);
+}
+
+.header-with-icon.extra-compact h1 {
+    font-size: 1.2rem;
+}
+
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+    .header-with-icon { 
+        gap: 8px;
+        padding: 6px 15px;
+    }
+    
+    .app-icon { 
+        width: 35px;
+        height: 35px;
+        border: 1px solid #d4af37;
+    }
+    
+    .header-with-icon h1 {
+        font-size: 1.3rem;
+    }
+}
+
         :root {
             --bg: #0f0f0f;
             --bg-alt: #1c1c1c;
